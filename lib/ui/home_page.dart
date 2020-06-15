@@ -81,6 +81,7 @@ class _HomePageState extends State<HomePage> {
                     image: contacts[index].img !=null ? // se o contato tiver imagem, pega a imagem dele do banco
                       FileImage(File(contacts[index].img)) :
                       AssetImage("images/person.png"),//caso contrário pega a imagem padrão do sistema
+
                       fit: BoxFit.cover
                     )
                 ),
@@ -88,6 +89,7 @@ class _HomePageState extends State<HomePage> {
               Padding(//dar um espaço da imagem para a info do contato
                 padding: EdgeInsets.only(left: 10.0),
                 child: Column(// formar uma coluna vertical de contatos
+                  crossAxisAlignment:CrossAxisAlignment.start, //alinha a direita do card
                   children: <Widget>[
                     Text(contacts[index].name ?? "",// ?? exibe o campo em branco caso não seja adicionado nome no banco
                     style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\PICHAU\\Desktop\\Desktop\\AgendaDeContatos\\build\\url_launcher\\intermediates\\res\\merged\\debug\\values-sk\\values-sk.xml",
+            "outputFile": "C:\\Users\\PICHAU\\Desktop\\Desktop\\Agenda\\build\\url_launcher\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sk\\values-sk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\PICHAU\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.1.0.aar\\45a73fe0058a9bf8726633212322b426\\res\\values-sk\\values-sk.xml",
@@ -16,7 +16,7 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\PICHAU\\Desktop\\Desktop\\AgendaDeContatos\\build\\url_launcher\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sk\\values-sk.xml",
+            "outputFile": "C:\\Users\\PICHAU\\Desktop\\Desktop\\Agenda\\build\\url_launcher\\intermediates\\res\\merged\\debug\\values-sk\\values-sk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\PICHAU\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.1.0.aar\\45a73fe0058a9bf8726633212322b426\\res\\values-sk\\values-sk.xml",
