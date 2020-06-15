@@ -171,12 +171,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _showContactPage({Contact contact}) async {
-    final recContact = await Navigator.push(context, 
+  void _showContactPage({Contact contact}) async {// chama a tela do contato
+    final recContact = await Navigator.push(context, //{} > Contact contact é um parâmetro opcional para criar novo contato ou editar um existente
       MaterialPageRoute(builder: (context) => ContactPage(contact: contact,))
     );
     if(recContact != null){
-      if(contact !=null){
+      if(contact !=null){//verificação se foi feita modificação no contato ou se ela foi salva
         await helper.updateContact(recContact);
       } else {
         await helper.saveContact(recContact);
@@ -184,7 +184,6 @@ class _HomePageState extends State<HomePage> {
         _getAllContacts();
     }
   }
-
   _getAllContacts() {
     helper.getAllContacts().then((list){
       setState(() {

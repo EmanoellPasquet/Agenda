@@ -15,12 +15,12 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
-
+  //controladores dos campos
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
 
-  final _nameFocus = FocusNode();
+  final _nameFocus = FocusNode();// dá foco no field de nome caso tente ser salvo com campo vazio
     
   bool _userEdited = false;
 
@@ -34,7 +34,7 @@ class _ContactPageState extends State<ContactPage> {
       _editedContact = Contact();
     } else {
       _editedContact = Contact.fromMap(widget.contact.toMap());
-
+      //caso o contato já exista, mostra seus dados na tela de edição
       _nameController.text = _editedContact.name;
       _emailController.text = _editedContact.email;
       _phoneController.text = _editedContact.phone;
@@ -43,7 +43,7 @@ class _ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return WillPopScope(// chama a função da janela de confirmação antes de sair da tela
       onWillPop: _requestPop,
       child: Scaffold (
       appBar: AppBar(
@@ -53,7 +53,7 @@ class _ContactPageState extends State<ContactPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if(_editedContact !=null && _editedContact.name.isNotEmpty) {
+          if(_editedContact !=null && _editedContact.name.isNotEmpty) {// testa se o nome está preenchido ou em branco
             Navigator.pop(context, _editedContact);
           } else {
             FocusScope.of(context).requestFocus(_nameFocus);
@@ -62,11 +62,11 @@ class _ContactPageState extends State<ContactPage> {
         child: Icon(Icons.check),
         backgroundColor: Colors.indigo,
       ),
-      body: SingleChildScrollView(
+      body: SingleChildScrollView(//serve pro teclado não cobrir os campos da tela
         padding: EdgeInsets.all(10.0),
         child: Column(
           children: <Widget>[
-            GestureDetector(
+            GestureDetector(// para poder clicar na imagem
               child: Container(
                 width: 140.0,
                 height: 140.0,
@@ -89,11 +89,11 @@ class _ContactPageState extends State<ContactPage> {
                 });
               },
             ),
-            TextField(
+            TextField(//campos com info do contato
               controller: _nameController,
               focusNode: _nameFocus,
               decoration: InputDecoration(labelText: "Nome"),
-              onChanged: (text){
+              onChanged: (text){//função para validar se exitiu alguma edição para mostrar na barra superior
                 _userEdited = true;
                 setState(() {
                  _editedContact.name = text; 
@@ -107,7 +107,7 @@ class _ContactPageState extends State<ContactPage> {
                 _userEdited = true;
                 _editedContact.email = text;
               },
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.emailAddress,//mostra @ no teclado
             ),
             TextField(
               controller: _phoneController,
@@ -116,7 +116,7 @@ class _ContactPageState extends State<ContactPage> {
                 _userEdited = true;
                 _editedContact.phone = text;
               },
-              keyboardType: TextInputType.phone,
+              keyboardType: TextInputType.phone,//teclado numérico
             )
           ],
         ),
@@ -125,12 +125,12 @@ class _ContactPageState extends State<ContactPage> {
     );
   }
 
-  Future<bool>_requestPop() {
+  Future<bool>_requestPop() { //função para testar se o contato sofreu edição e mostra janela de confirmação para salvamento
     if(_userEdited) {
       showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
+          return AlertDialog(//tela para validação de salvamento
             title: Text("Descartar Alterações?"),
             content: Text("Se sair as alterações serão perdidas."),
             actions: <Widget>[
